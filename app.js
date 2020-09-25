@@ -127,6 +127,7 @@ const init = async () => {
         // After the user has input all employees desired, call the `render` function (required above) and pass in an array containing all employee objects; the `render` function will generate and return a block of HTML including templated divs for each employee
         // write file to outputPath directory and use the render function to create html for the team member array
         fs.writeFileSync(outputPath, render(teamMembers),"utf-8")
+        console.log("Wrote HTML to output Folder");
         } catch (err) {
             console.log(err)
         }
