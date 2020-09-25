@@ -82,6 +82,14 @@ const addEmployeeQuestions = [
     },
 ]
 
+// function to call add another function
+const addAnotherEmployee = async function() {
+    const addEmployeeAnswers = await inquirer.prompt(addEmployeeQuestions);
+    if (addEmployeeAnswers.addEmployee) {
+        init();
+    }
+}
+
 // function that adds employees to array based on type
 const init = async () => {
     // uses a try because async function
@@ -92,17 +100,24 @@ const init = async () => {
         if (employeeAnswers.role === "Manager") {
             // create a variable to store the answers to manager questions 
             const managerAnswers = await inquirer.prompt(managerQuestions);
-            // create a variable for manager that stores constructor by answers
-            const manager = new Manager (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
+            // create a variable for manager that stores constructor by answers from employee or manager
+            const manager = new Manager(employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
+            // console.log('init manager object', manager)
             // push variable to array as an object
-            console.log('init manager object', manager)
             teamMembers.push(manager);
             addAnotherEmployee();
-        } else if  (employeeAnswers.role === "Engineer") {
-        } else { (employeeAnswers.role === "Intern") 
-    } catch (err) {
-        console.log(err)
-    }
-};
+        } else if (employeeAnswers.role === "Engineer") {
+            const engineerAnswers = await inquirer.prompt(engineerQuestions);
+            const engineer = new Engineer(employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, engineerAnswers.github);
+            console.log('init engineer object', engineer)
+            teamMembers.push(engineer);
+            const addEmployee = await inquirer.prompt(addEmployeeQuestions);
+            addAnotherEmployee();
+        } else {
+            (employeeAnswers.role === "Intern")
+        } catch (err) {
+            console.log(err)
+        }
+    };
 
-init();
+    init();
