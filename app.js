@@ -100,21 +100,33 @@ const init = async () => {
         if (employeeAnswers.role === "Manager") {
             // create a variable to store the answers to manager questions 
             const managerAnswers = await inquirer.prompt(managerQuestions);
-            // create a variable for manager that stores constructor by answers from employee or manager
-            const manager = new Manager(employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
-            // console.log('init manager object', manager)
+            // create a variable for manager that stores constructor by answers
+            const manager = new Manager (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
             // push variable to array as an object
+            console.log('init manager object', manager)
             teamMembers.push(manager);
             addAnotherEmployee();
-        } else if (employeeAnswers.role === "Engineer") {
+        } else if  (employeeAnswers.role === "Engineer") {
+            // create a variable to store the answers to engineer questions 
             const engineerAnswers = await inquirer.prompt(engineerQuestions);
-            const engineer = new Engineer(employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, engineerAnswers.github);
+            // create a variable for engineer that stores constructor by answers
+            const engineer = new Engineer (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, engineerAnswers.github);
+            // push variable to array as an object
             console.log('init engineer object', engineer)
             teamMembers.push(engineer);
             const addEmployee = await inquirer.prompt(addEmployeeQuestions);
             addAnotherEmployee();
-        } else {
-            (employeeAnswers.role === "Intern")
+        } else { (employeeAnswers.role === "Intern") 
+            // create a variable to store the answers to intern questions 
+            const internAnswers = await inquirer.prompt(internQuestions);
+            // create a variable for intern that stores constructor by answers
+            const intern = new Intern (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, internAnswers.school);
+            // push variable to array as an object
+            console.log('init intern object', intern)
+            teamMembers.push(intern);
+            const addEmployee = await inquirer.prompt(addEmployeeQuestions);
+            addAnotherEmployee();
+        }
         } catch (err) {
             console.log(err)
         }
