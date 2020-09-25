@@ -102,31 +102,31 @@ const init = async () => {
             const managerAnswers = await inquirer.prompt(managerQuestions);
             // create a variable for manager that stores constructor by answers
             const manager = new Manager (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
+            // console.log('init manager object', manager)
             // push variable to array as an object
-            console.log('init manager object', manager)
             teamMembers.push(manager);
+            // function to add another employee that calls init
             addAnotherEmployee();
+            // repeats manger process for engineer
         } else if  (employeeAnswers.role === "Engineer") {
-            // create a variable to store the answers to engineer questions 
             const engineerAnswers = await inquirer.prompt(engineerQuestions);
-            // create a variable for engineer that stores constructor by answers
             const engineer = new Engineer (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, engineerAnswers.github);
-            // push variable to array as an object
-            console.log('init engineer object', engineer)
+            // console.log('init engineer object', engineer)
             teamMembers.push(engineer);
             const addEmployee = await inquirer.prompt(addEmployeeQuestions);
             addAnotherEmployee();
+            // repeats manager and engineer process for interns
         } else { (employeeAnswers.role === "Intern") 
-            // create a variable to store the answers to intern questions 
             const internAnswers = await inquirer.prompt(internQuestions);
-            // create a variable for intern that stores constructor by answers
             const intern = new Intern (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, internAnswers.school);
-            // push variable to array as an object
-            console.log('init intern object', intern)
+            // console.log('init intern object', intern)
             teamMembers.push(intern);
             const addEmployee = await inquirer.prompt(addEmployeeQuestions);
             addAnotherEmployee();
         }
+        // After the user has input all employees desired, call the `render` function (required above) and pass in an array containing all employee objects; the `render` function will generate and return a block of HTML including templated divs for each employee
+        // write file to outputPath directory and use the render function to create html for the team member array
+        fs.writeFileSync(outputPath, render(teamMembers),"utf-8")
         } catch (err) {
             console.log(err)
         }
