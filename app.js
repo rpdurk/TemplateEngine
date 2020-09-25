@@ -69,7 +69,7 @@ const internQuestions = [
 const managerQuestions = [
     {
         type: 'input',
-        name: 'office',
+        name: 'officeNumber',
         message: 'What is your office number?',
     },
 ]
@@ -101,7 +101,7 @@ const init = async () => {
             // create a variable to store the answers to manager questions 
             const managerAnswers = await inquirer.prompt(managerQuestions);
             // create a variable for manager that stores constructor by answers
-            const manager = new Manager (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, managerAnswers.office);
+            const manager = new Manager (employeeAnswers.name,employeeAnswers.id, employeeAnswers.email,  managerAnswers.officeNumber);
             // console.log('init manager object', manager)
             // push variable to array as an object
             teamMembers.push(manager);
@@ -110,7 +110,7 @@ const init = async () => {
             // repeats manger process for engineer
         } else if  (employeeAnswers.role === "Engineer") {
             const engineerAnswers = await inquirer.prompt(engineerQuestions);
-            const engineer = new Engineer (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, engineerAnswers.github);
+            const engineer = new Engineer (employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, engineerAnswers.github);
             // console.log('init engineer object', engineer)
             teamMembers.push(engineer);
             const addEmployee = await inquirer.prompt(addEmployeeQuestions);
@@ -118,7 +118,7 @@ const init = async () => {
             // repeats manager and engineer process for interns
         } else { (employeeAnswers.role === "Intern") 
             const internAnswers = await inquirer.prompt(internQuestions);
-            const intern = new Intern (employeeAnswers.name, employeeAnswers.email, employeeAnswers.id, internAnswers.school);
+            const intern = new Intern (employeeAnswers.name, employeeAnswers.id, employeeAnswers.email,  internAnswers.school);
             // console.log('init intern object', intern)
             teamMembers.push(intern);
             const addEmployee = await inquirer.prompt(addEmployeeQuestions);
