@@ -21,7 +21,7 @@ URL of the GitHub repository: https://github.com/rpdurk/TemplateEngine
 
 >Teams of all kinds want to showcase their valuable employees and give them credit for their hard work.  This Template Engine will allow an individual to use the command line to generate a template that describes fundamental information for their team members: mangers, engineers, and interns.
 
-This  [Inquirer npm package](https://github.com/SBoudrias/Inquirer.js/) to obtain populate data for teams of any size. 
+Utilize the [Inquirer npm package](https://github.com/SBoudrias/Inquirer.js/) to populate data for teams of any size. 
 
 ## View
 
@@ -31,7 +31,7 @@ The repository can be found, [here](https://github.com/rpdurk/TemplateEngine).
 
 To use this application, download and run npm install.
 
-* Example video of app being ran.
+* ![Watch the app run!](./assets/ezgif.com-video-to-gif.gif)
 
 ## Built With
 

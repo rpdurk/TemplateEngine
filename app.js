@@ -101,7 +101,7 @@ const init = async () => {
             // create a variable to store the answers to manager questions 
             const managerAnswers = await inquirer.prompt(managerQuestions);
             // create a variable for manager that stores constructor by answers
-            const manager = new Manager (employeeAnswers.name,employeeAnswers.id, employeeAnswers.email,  managerAnswers.officeNumber);
+            const manager = new Manager (employeeAnswers.name, employeeAnswers.id, employeeAnswers.email,  managerAnswers.officeNumber);
             // console.log('init manager object', manager)
             // push variable to array as an object
             teamMembers.push(manager);
